@@ -101,16 +101,11 @@
                             <div class="col-md-9">
                                 <label class="radio-inline"><input type="radio" name="optradio"
                                         checked>&nbsp;1&nbsp;</label>
-                                <label class="radio-inline"><input type="radio"
-                                        name="optradio">&nbsp;2&nbsp;</label>
-                                <label class="radio-inline"><input type="radio"
-                                        name="optradio">&nbsp;3&nbsp;</label>
-                                <label class="radio-inline"><input type="radio"
-                                        name="optradio">&nbsp;4&nbsp;</label>
-                                <label class="radio-inline"><input type="radio"
-                                        name="optradio">&nbsp;5&nbsp;</label>
-                                <label class="radio-inline"><input type="radio"
-                                        name="optradio">&nbsp;6&nbsp;</label>
+                                <label class="radio-inline"><input type="radio" name="optradio">&nbsp;2&nbsp;</label>
+                                <label class="radio-inline"><input type="radio" name="optradio">&nbsp;3&nbsp;</label>
+                                <label class="radio-inline"><input type="radio" name="optradio">&nbsp;4&nbsp;</label>
+                                <label class="radio-inline"><input type="radio" name="optradio">&nbsp;5&nbsp;</label>
+                                <label class="radio-inline"><input type="radio" name="optradio">&nbsp;6&nbsp;</label>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -172,7 +167,8 @@
                                     data-palcement="bottom" data-scroll="#reservationform">
                                     Reserve Table
                                 </button></a> -->
-                                <a href="#" data-target="#reserveTableModal" data-toggle="modal"><button class="btn btn-warning btn-block" type="button">Reserve Table</button></a>
+                            <a href="#" data-target="#reserveTableModal" data-toggle="modal"><button
+                                    class="btn btn-warning btn-block" type="button">Reserve Table</button></a>
                         </div>
                     </div>
                 </div>
@@ -233,14 +229,9 @@
                     <a href="#mycarousel" class="carousel-control-next" role="button" data-slide="next">
                         <span class="carousel-control-next-icon"></span>
                     </a>
-                    <div class="btn-group" id="carouselButton">
-                        <button class="btn btn-secondary btn-sm" id="carousel-pause">
-                            <span class="fa fa-pause"></span>
-                        </button>
-                        <button class="btn btn-secondary btn-sm" id="carousel-play">
-                            <span class="fa fa-play"></span>
-                        </button>
-                    </div>
+                    <button class="btn btn-secondary btn-sm" id="carouselButton">
+                        <span class="fa fa-pause"></span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -408,13 +399,19 @@
         });
     </script> -->
     <script>
-        $(document).ready(function() {
-            $('#mycarousel').carousel({interval: 2000});
-            $('#carousel-pause').click(function() {
-                $('#mycarousel').carousel('pause');
-            });
-            $('#carousel-play').click(function() {
-                $('#mycarousel').carousel('cycle');
+        $(document).ready(function () {
+            $('#mycarousel').carousel({ interval: 2000 });
+            $("#carouselButton").click(function(){
+                if ($("#carouselButton").children("span").hasClass('fa-pause')) {
+                    $("#mycarousel").carousel('pause');
+                    $("#carouselButton").children("span").removeClass('fa-pause');
+                    $("#carouselButton").children("span").addClass('fa-play');
+                }
+                else if ($("#carouselButton").children("span").hasClass('fa-play')){
+                    $("#mycarousel").carousel('cycle');
+                    $("#carouselButton").children("span").removeClass('fa-play');
+                    $("#carouselButton").children("span").addClass('fa-pause');                    
+                }
             });
         });
     </script>
